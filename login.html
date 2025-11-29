@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SehatSaathi — Login</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .role-select {
+      display:flex;
+      gap:10px;
+      margin:14px 0;
+    }
+    .role-btn {
+      flex:1;
+      padding:10px;
+      border-radius:10px;
+      text-align:center;
+      cursor:pointer;
+      background:#f5f8ff;
+      border:1px solid transparent;
+      font-weight:600;
+      transition:0.2s;
+    }
+    .role-btn.active {
+      background:var(--accent);
+      color:#fff;
+      border-color:var(--accent);
+    }
+    .role-btn:hover {
+      opacity:0.88;
+    }
+
+    /* logo styling */
+    .brand-inline {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+    }
+    .brand-inline img {
+      width:40px;
+      height:40px;
+      border-radius:8px;
+      object-fit:contain;
+    }
+    .brand-inline .brand-text {
+      font-size:1.15rem;
+      font-weight:700;
+      color:var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="container" style="display:flex;justify-content:space-between;align-items:center;padding-top:18px;">
+
+  <a class="brand-inline" href="index.html">
+    <img src="assets/img/sehatsaathi-logo.png" alt="SehatSaathi logo"
+         onerror="this.style.display='none'">
+    <span class="brand-text">SehatSaathi</span>
+  </a>
+
+  <div style="display:flex;gap:10px;">
+    <a class="btn-ghost btn" href="signup.html">Create account</a>
+    <a class="btn-ghost btn" href="index.html">Home</a>
+  </div>
+
+</header>
+
+<!-- MAIN -->
+<main class="container" style="max-width:520px;margin:auto;padding:20px;">
+
+  <div class="card" style="padding:22px;">
+
+    <h2>Sign in</h2>
+    <p class="note">Choose your role & login securely</p>
+
+    <!-- ROLE SELECTOR -->
+    <div class="role-select" id="roleSelect">
+      <div class="role-btn active" data-role="patient">Patient</div>
+      <div class="role-btn" data-role="family">Family</div>
+      <div class="role-btn" data-role="doctor">Doctor</div>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <form id="loginForm">
+      <label class="field">
+        <span class="label">Phone or Email</span>
+        <input id="loginIdentifier" class="input" required placeholder="98765 43210 / example@mail.com">
+      </label>
+
+      <label class="field">
+        <span class="label">Password</span>
+        <input id="loginPassword" class="input" type="password" required placeholder="******">
+      </label>
+
+      <button class="btn btn-primary" style="width:100%;margin-top:16px;">Login</button>
+    </form>
+
+    <p style="text-align:center;margin-top:10px;">
+      New user? <a href="signup.html" style="color:var(--accent);font-weight:600;">Create account</a>
+    </p>
+
+  </div>
+
+</main>
+
+<!-- SCRIPT -->
+<script>
+  // ===== Role Selection =====
+  let selectedRole = "patient";
+  const roleBtns = document.querySelectorAll(".role-btn");
+
+  roleBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      roleBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      selectedRole = btn.dataset.role;
+    });
+  });
+
+  // ===== Login Redirect =====
+  document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    localStorage.setItem("userRole", selectedRole);
+
+    if(selectedRole === "patient") window.location.href = "patient.html";
+    if(selectedRole === "doctor") window.location.href = "doctor.html";
+    if(selectedRole === "family") window.location.href = "family.html";
+  });
+</script>
+
+</body>
+</html>

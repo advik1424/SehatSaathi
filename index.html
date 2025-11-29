@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="SehatSaathi — medicine reminders, vitals tracking, family & doctor sharing, and SOS for elders and chronic patients.">
+  <title>SehatSaathi — Home</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* Landing-only refinements */
+    .landing-hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: center;
+      margin-top: 24px;
+    }
+    .hero-layout {
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+    .hero-visual-box {
+      width:100%;
+      max-width:360px;
+      margin:0 auto;
+      border-radius:18px;
+      background:linear-gradient(180deg,#ffffff,#f3fff7);
+      padding:20px;
+      box-shadow:var(--shadow);
+      text-align:center;
+    }
+    .feature-grid,
+    .how-grid,
+    .testimonials-grid {
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+    .card {
+      background:#fff;
+      padding:16px;
+      border-radius:14px;
+      box-shadow:var(--shadow);
+    }
+
+    /* header brand */
+    .brand-inline { display:flex; gap:12px; align-items:center; text-decoration:none; }
+    .brand-inline img { width:44px; height:44px; border-radius:10px; object-fit:contain; display:block; }
+    .brand-inline .brand-text { display:flex; flex-direction:column; line-height:1; color:var(--accent); font-weight:700; }
+    .brand-inline .tagline { font-weight:600; color:var(--muted); font-size:0.85rem; }
+
+    /* hero visual */
+    .hero-visual { height:140px; border-radius:12px; background:#eefaf4; display:flex; justify-content:center; align-items:center; color:#8fb0a1; overflow:hidden; }
+    .hero-visual img { width:100%; height:100%; object-fit:contain; }
+
+    @media(min-width:860px){
+      .landing-hero{grid-template-columns:1fr 480px;gap:40px;}
+      .feature-grid{grid-template-columns:repeat(3,1fr);}
+      .how-grid{grid-template-columns:repeat(2,1fr);}
+      .testimonials-grid{grid-template-columns:repeat(2,1fr);}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="container" style="display:flex;justify-content:space-between;align-items:center;padding-top:16px;">
+    <a class="brand-inline" href="index.html" aria-label="SehatSaathi home">
+      <img src="assets/img/sehatsaathi-logo.png" alt="SehatSaathi logo" onerror="this.style.display='none'">
+      <div class="brand-text">
+        <span style="font-size:1.1rem">SehatSaathi</span>
+        <small class="tagline">Your trusted partner in everyday health</small>
+      </div>
+    </a>
+
+    <nav style="display:flex;gap:14px;align-items:center;">
+      <a class="note" href="#features">Features</a>
+      <a class="note" href="#how">How it Works</a>
+      <a class="note" href="#testimonials">Reviews</a>
+      <a class="btn-ghost btn" href="login.html">Sign in</a>
+      <a class="btn-primary btn" href="signup.html">Get Started</a>
+    </nav>
+  </header>
+
+  <main class="container" style="padding-bottom:40px;">
+
+    <!-- HERO -->
+    <section class="landing-hero" id="home">
+      <div class="hero-layout">
+        <h1 class="h-title" style="margin:0;">Sehat ka har roz ka saathi</h1>
+
+        <p class="h-lead" style="margin:0;">
+          SehatSaathi helps elders & chronic-care patients take medicines on time,
+          track vitals, notify family & doctors, and handle emergencies quickly —
+          all in one simple, app-like experience.
+        </p>
+        <p class="h-lead" style="margin:0;"><i>Connecting you, your family, and your care.</i></p>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;">
+          <a href="signup.html" class="btn btn-primary">Create Account</a>
+          <a href="login.html" class="btn btn-ghost">Sign in</a>
+        </div>
+
+        <div class="note" style="margin-top:12px;color:var(--muted);">
+          • Offline reminders • Family sharing • Doctor dashboard • SOS emergency
+        </div>
+      </div>
+
+      <aside class="hero-visual-box" aria-hidden="true">
+        <div style="font-weight:700;color:var(--accent);font-size:1rem;margin-bottom:12px;">
+          SehatSaathi
+        </div>
+
+        <div class="hero-visual" role="img" aria-label="SehatSaathi visual">
+          <!-- Replace with app screenshot or illustration -->
+          <img src="assets/img/sehatsaathi-logo.png" alt="SehatSaathi visual" onerror="this.style.display='none'">
+          <span style="font-weight:600;color:var(--accent);display:none;">SehatSaathi</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" style="margin-top:40px;">
+      <h2 style="color:var(--accent);margin-bottom:14px;">Key Features</h2>
+
+      <div class="feature-grid">
+        <div class="card">
+          <h3 style="margin:0 0 8px;">Reliable Reminders</h3>
+          <p class="note">Smart repeat, snooze, retry and offline notifications so doses aren't missed.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px;">Vitals Tracking</h3>
+          <p class="note">Record BP, glucose, SpO₂ and generate shareable reports for doctors.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px;">Sehat Store</h3>
+          <p class="note">Buy medicines, first-aid kits and essential care items directly from the app.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px;">Emergency SOS</h3>
+          <p class="note">One-tap SOS sends alerts and location to family and designated contacts.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px;">Family & Doctor Sharing</h3>
+          <p class="note">Share compliance, charts and insights with family members and clinicians.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" style="margin-top:40px;">
+      <h2 style="color:var(--accent);margin-bottom:14px;">How it Works</h2>
+
+      <div class="how-grid">
+        <div class="card">
+          <strong>1. Add Medicines</strong>
+          <p class="note" style="margin-top:6px;">Set dose, schedule & notes quickly — supports complex regimens.</p>
+        </div>
+        <div class="card">
+          <strong>2. Take or Snooze</strong>
+          <p class="note" style="margin-top:6px;">Tap Taken or Snooze when notified; retry ensures delivery.</p>
+        </div>
+        <div class="card">
+          <strong>3. Track Vitals</strong>
+          <p class="note" style="margin-top:6px;">Record measurements and view trends over time.</p>
+        </div>
+        <div class="card">
+          <strong>4. Emergency Help</strong>
+          <p class="note" style="margin-top:6px;">SOS sends instant alerts and location to family and caregivers.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" style="margin-top:40px;">
+      <h2 style="color:var(--accent);margin-bottom:14px;">What People Say</h2>
+
+      <div class="testimonials-grid">
+        <blockquote class="card">
+          <p>"My mom never misses a dose now — life saver!"</p>
+          <cite class="note">— Aditi, caregiver</cite>
+        </blockquote>
+
+        <blockquote class="card">
+          <p>"Vitals chart helps me quickly review patient health."</p>
+          <cite class="note">— Dr. Sen</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="margin-top:40px;">
+      <h2 style="color:var(--accent);margin-bottom:14px;">FAQ</h2>
+
+      <details class="card" style="margin-bottom:10px;">
+        <summary style="font-weight:600;">Do reminders work offline?</summary>
+        <p class="note" style="margin-top:6px;">Yes — the PWA triggers local notifications even without internet.</p>
+      </details>
+
+      <details class="card" style="margin-bottom:10px;">
+        <summary style="font-weight:600;">Is my health data secure?</summary>
+        <p class="note" style="margin-top:6px;">Yes. Data remains on your device unless you enable cloud sync.</p>
+      </details>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:6px;">
+      <a class="note" href="#privacy">Privacy</a>
+      <a class="note" href="#terms">Terms</a>
+      <a class="note" href="#contact">Contact</a>
+    </div>
+    <div class="note">© <span id="year"></span> SehatSaathi</div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

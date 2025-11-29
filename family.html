@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SehatSaathi — Family Portal</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/family.css">
+  <style>
+    .brand-inline { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .brand-inline img { width:44px; height:44px; border-radius:8px; object-fit:contain; box-shadow:0 6px 18px rgba(2,20,60,0.04); background:#fff; }
+    .brand-inline .brand-text { font-weight:800; color:var(--accent); font-size:1rem; }
+    .dashboard-root.collapsed .sidebar .brand-text { display:none; }
+  </style>
+</head>
+<body>
+  <div class="dashboard-root" id="root">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" aria-label="Family navigation">
+      <div class="brand">
+        <a href="index.html" class="brand-inline sidebar-brand" aria-label="SehatSaathi home" style="display:flex;gap:12px;align-items:center;text-decoration:none;">
+          <img src="assets/img/sehatsaathi-logo.png" alt="SehatSaathi logo" onerror="this.style.display='none'">
+          <div class="brand-text">
+            <div class="brand-title">SehatSaathi</div>
+            <div class="brand-sub">Family Portal</div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="nav-links" role="navigation">
+        <div class="nav-item active" data-link="overview" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zM3 21h8v-6H3v6zM13 21h8V11h-8v10zM13 3v6h8V3h-8z" fill="currentColor"/></svg>
+          <span class="nav-label">Overview</span>
+        </div>
+        <div class="nav-item" data-link="meds" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M7 2h10v4H7V2zM5 8h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8z" fill="currentColor"/></svg>
+          <span class="nav-label">Add Medicine</span>
+        </div>
+
+        <div class="nav-item" data-link="members" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M16 11c1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3 1.3 3 3 3zM8 11c1.7 0 3-1.3 3-3S9.7 5 8 5 5 6.3 5 8s1.3 3 3 3zM8 13c-3.3 0-6 1.7-6 4v2h12v-2c0-2.3-2.7-4-6-4zM16 13c-.4 0-.8 0-1.1.1 1.3.9 2.1 2.3 2.1 3.9v1h6v-1c0-2.3-2.7-4-6-4z" fill="currentColor"/></svg>
+          <span class="nav-label">Family Members</span>
+        </div>
+        <div class="nav-item" data-link="members" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M16 11c1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3 1.3 3 3 3zM8 11c1.7 0 3-1.3 3-3S9.7 5 8 5 5 6.3 5 8s1.3 3 3 3zM8 13c-3.3 0-6 1.7-6 4v2h12v-2c0-2.3-2.7-4-6-4zM16 13c-.4 0-.8 0-1.1.1 1.3.9 2.1 2.3 2.1 3.9v1h6v-1c0-2.3-2.7-4-6-4z" fill="currentColor"/></svg>
+          <span class="nav-label">Book appointment</span>
+        </div>
+        <div class="nav-item" data-link="members" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M16 11c1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3 1.3 3 3 3zM8 11c1.7 0 3-1.3 3-3S9.7 5 8 5 5 6.3 5 8s1.3 3 3 3zM8 13c-3.3 0-6 1.7-6 4v2h12v-2c0-2.3-2.7-4-6-4zM16 13c-.4 0-.8 0-1.1.1 1.3.9 2.1 2.3 2.1 3.9v1h6v-1c0-2.3-2.7-4-6-4z" fill="currentColor"/></svg>
+          <span class="nav-label">Store</span>
+        </div>
+
+        <div class="nav-item" data-link="shared-meds" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M7 2h10v4H7V2zM5 8h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8z" fill="currentColor"/></svg>
+          <span class="nav-label">Shared Medicines</span>
+        </div>
+
+        <div class="nav-item" data-link="alerts" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 22a2 2 0 002-2H10a2 2 0 002 2zm6-6V10c0-3.3-2.2-6-5-6V3a1 1 0 10-2 0v1c-2.8 0-5 2.7-5 6v6l-2 2v1h16v-1l-2-2z" fill="currentColor"/></svg>
+          <span class="nav-label">Notification</span>
+        </div>
+
+        <div class="section-title">Account</div>
+
+        <div class="nav-item" data-link="settings" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 8a4 4 0 100 8 4 4 0 000-8z" fill="currentColor"/></svg>
+          <span class="nav-label">Settings</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="signed">Signed in as</div>
+        <div class="signed-name" id="familyName">Aditya Gupta</div>
+        <div class="signed-role">Family</div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" id="main">
+
+      <!-- TOPBAR (with logo) -->
+      <div class="topbar">
+        <div class="top-left">
+          <a class="brand-inline" href="index.html" aria-label="SehatSaathi home">
+            
+          </a>
+
+          <button id="toggleBtn" class="btn btn-ghost" aria-label="Toggle sidebar">☰</button>
+
+          <div class="search" role="search" aria-label="Search family records">
+            <svg class="search-icon" viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35" stroke="#6b7f81" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="11" cy="11" r="6" stroke="#6b7f81" stroke-width="1.6" fill="none"/></svg>
+            <input placeholder="Search member, medicine..." aria-label="Search input">
+          </div>
+        </div>
+
+        <div class="top-right">
+          <div class="user-info">
+            <div class="user-name">Aditya</div>
+            <div class="user-email">you@example.com</div>
+          </div>
+
+          <button id="logoutBtn" class="btn btn-ghost" title="Logout">Logout</button>
+          <div class="avatar">AG</div>
+        </div>
+      </div>
+
+      <!-- SUMMARY -->
+      <section class="dash-grid" aria-label="Summary">
+        <div class="summary-card">
+          <h4>Connected members</h4>
+          <div class="value">3</div>
+          <div class="note">Parents & spouse</div>
+        </div>
+
+        <div class="summary-card">
+          <h4>Shared meds today</h4>
+          <div class="value">6</div>
+          <div class="note">2 overdue</div>
+        </div>
+
+        <div class="summary-card">
+          <h4>Active alerts</h4>
+          <div class="value">1</div>
+          <div class="note">1 high priority</div>
+        </div>
+      </section>
+
+      <!-- PANELS -->
+      <section class="layout-grid">
+        <div class="left-col">
+          <div class="panel">
+            <h3>Shared medicines</h3>
+            <table class="table" aria-label="Shared medicines">
+              <thead><tr><th>Member</th><th>Medicine</th><th>Time</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Mrs. Gupta</td><td>Amlodipine 5mg</td><td>08:00 AM</td><td><span class="pill due">Missed</span></td></tr>
+                <tr><td>Mr. Gupta</td><td>Metformin 500mg</td><td>09:30 AM</td><td><span class="pill">Scheduled</span></td></tr>
+                <tr><td>R. Sharma</td><td>Atorvastatin 10mg</td><td>10:00 AM</td><td><span class="pill taken">Taken</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="panel">
+            <h3>Member vitals (recent)</h3>
+            <div class="chart-placeholder">[Shared vitals chart]</div>
+          </div>
+        </div>
+
+        <aside class="right-col">
+          <div class="panel">
+            <h3>Alerts</h3>
+            <div class="feed-item">
+              <div class="feed-icon">⚠️</div>
+              <div class="feed-body">
+                <div class="feed-title">Missed dose — Mrs. Gupta</div>
+                <div class="note">Amlodipine • 08:10 AM</div>
+              </div>
+            </div>
+            <div class="feed-item">
+              <div class="feed-icon">🔔</div>
+              <div class="feed-body">
+                <div class="feed-title">Low SpO₂ — Mr. Gupta</div>
+                <div class="note">96% — monitor</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Quick actions</h3>
+            <div class="actions-col">
+              <button class="btn btn-primary" id="ackAlertBtn">Acknowledge alert</button>
+              <button class="btn btn-ghost" id="messageDoctorBtn">Message doctor</button>
+              <button class="btn btn-ghost" id="addMemberBtn">Add family member</button>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    (function(){
+      const root = document.getElementById('root');
+      const toggle = document.getElementById('toggleBtn');
+      const navItems = document.querySelectorAll('.nav-item');
+      const logout = document.getElementById('logoutBtn');
+
+      toggle.addEventListener('click', ()=> root.classList.toggle('collapsed'));
+
+      navItems.forEach(item=>{
+        item.addEventListener('click', ()=>{
+          const link = item.dataset.link;
+          navItems.forEach(i=>i.classList.remove('active'));
+          item.classList.add('active');
+
+          if (link === 'settings') {
+            window.location.href = 'settings.html';
+            return;
+          }
+          window.scrollTo({top:0,behavior:'smooth'});
+          if(window.innerWidth < 980) root.classList.remove('collapsed');
+        });
+      });
+
+      logout.addEventListener('click', ()=>{
+        try { localStorage.removeItem('loggedInUser'); localStorage.removeItem('userRole'); } catch(e){}
+        window.location.href = 'index.html';
+      });
+
+      document.getElementById('ackAlertBtn').addEventListener('click', ()=> alert('Alert acknowledged (demo).'));
+      document.getElementById('messageDoctorBtn').addEventListener('click', ()=> alert('Open message composer (demo).'));
+      document.getElementById('addMemberBtn').addEventListener('click', ()=> alert('Add member flow (demo).'));
+    })();
+  </script>
+</body>
+</html>

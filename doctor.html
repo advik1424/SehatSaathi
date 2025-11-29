@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SehatSaathi — Doctor Dashboard</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <style>
+    .brand-inline { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .brand-inline img { width:44px; height:44px; border-radius:8px; object-fit:contain; box-shadow:0 6px 18px rgba(2,20,60,0.04); background:#fff; }
+    .brand-inline .brand-text { font-weight:800; color:var(--accent); font-size:1rem; }
+    .dashboard-root.collapsed .sidebar .brand-text { display:none; }
+  </style>
+</head>
+<body>
+  <div class="dashboard-root" id="root">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" aria-label="Sidebar">
+      <div class="brand">
+        <a href="index.html" class="brand-inline sidebar-brand" aria-label="SehatSaathi home" style="display:flex;gap:12px;align-items:center;text-decoration:none;">
+          <img src="assets/img/sehatsaathi-logo.png" alt="SehatSaathi logo" onerror="this.style.display='none'">
+          <div class="brand-text">
+            <div class="brand-title">SehatSaathi</div>
+            <div class="brand-sub">Doctor Portal</div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="nav-links" role="navigation">
+        <div class="nav-item active" data-link="overview" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zM3 21h8v-6H3v6zM13 21h8V11h-8v10zM13 3v6h8V3h-8z" fill="currentColor"/></svg>
+          <span class="nav-label">Overview</span>
+        </div>
+        <div class="nav-item" data-link="meds" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M7 2h10v4H7V2zM5 8h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8z" fill="currentColor"/></svg>
+          <span class="nav-label">Notification</span>
+        </div>
+
+        <div class="nav-item" data-link="appointments" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M7 10h10v2H7zM7 6h10v2H7z" fill="currentColor"/></svg>
+          <span class="nav-label">Appointments</span>
+        </div>
+
+        <div class="nav-item" data-link="patients" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zM6.6 14c-2.5 1.5-4 4-4 6h16.8c0-2-1.6-4.6-4-6C15.2 13 9.6 13 6.6 14z" fill="currentColor"/></svg>
+          <span class="nav-label">Patients</span>
+        </div>
+        <div class="nav-item" data-link="patients" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zM6.6 14c-2.5 1.5-4 4-4 6h16.8c0-2-1.6-4.6-4-6C15.2 13 9.6 13 6.6 14z" fill="currentColor"/></svg>
+          <span class="nav-label">Store</span>
+        </div>
+
+        <div class="nav-item" data-link="prescriptions" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="currentColor"/></svg>
+          <span class="nav-label">Prescriptions</span>
+        </div>
+
+        <div class="nav-item" data-link="messages" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M21 6v9a2 2 0 0 1-2 2H8l-5 3V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="currentColor"/></svg>
+          <span class="nav-label">Messages</span>
+        </div>
+
+        <div class="section-title">Account</div>
+
+        <div class="nav-item" data-link="settings" tabindex="0">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 8a4 4 0 100 8 4 4 0 000-8z" fill="currentColor"/></svg>
+          <span class="nav-label">Settings</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="signed">Signed in as</div>
+        <div class="signed-name" id="docName">Dr. Mehra</div>
+        <div class="signed-role">Cardiologist</div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" id="main">
+
+      <!-- TOPBAR (with logo) -->
+      <div class="topbar">
+        <div class="top-left">
+          <a class="brand-inline" href="index.html" aria-label="SehatSaathi home">
+           
+          </a>
+
+          <button id="toggleBtn" class="btn btn-ghost" aria-label="Toggle sidebar">☰</button>
+
+          <div class="search" role="search" aria-label="Search appointments or patients">
+            <svg class="search-icon" viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35" stroke="#6b7f81" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="11" cy="11" r="6" stroke="#6b7f81" stroke-width="1.6" fill="none"/></svg>
+            <input placeholder="Search patient, appointment..." aria-label="Search input">
+          </div>
+        </div>
+
+        <div class="top-right">
+          <div class="user-info">
+            <div class="user-name">Dr. Mehra</div>
+            <div class="user-email">dr.mehra@clinic.example</div>
+          </div>
+
+          <button id="logoutBtn" class="btn btn-ghost" title="Logout">Logout</button>
+          <div class="avatar">DM</div>
+        </div>
+      </div>
+
+      <!-- SUMMARY -->
+      <section class="dash-grid" aria-label="Summary">
+        <div class="summary-card">
+          <h4>Today's appointments</h4>
+          <div class="value">12</div>
+          <div class="note">3 now • 2 urgent</div>
+        </div>
+
+        <div class="summary-card">
+          <h4>Patients</h4>
+          <div class="value">320</div>
+          <div class="note">Active: 142</div>
+        </div>
+
+        <div class="summary-card">
+          <h4>Messages</h4>
+          <div class="value">5</div>
+          <div class="note">New patient messages</div>
+        </div>
+      </section>
+
+      <!-- PANELS (trimmed for brevity but present in file) -->
+      <section class="layout-grid">
+        <div class="left-col">
+          <div class="panel">
+            <h3>Upcoming appointments</h3>
+            <table class="table" aria-label="Appointments">
+              <thead><tr><th>Time</th><th>Patient</th><th>Reason</th><th>Room</th><th></th></tr></thead>
+              <tbody>
+                <tr><td>09:00</td><td>R. Sharma</td><td>BP check</td><td>101</td><td><button class="btn btn-ghost small">View</button></td></tr>
+                <tr><td>09:20</td><td>K. Mehta</td><td>Follow-up</td><td>101</td><td><button class="btn btn-ghost small">View</button></td></tr>
+                <tr><td>09:40</td><td>S. Verma</td><td>Medication review</td><td>102</td><td><button class="btn btn-ghost small">View</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="panel">
+            <h3>Prescription drafts</h3>
+            <!-- content -->
+          </div>
+        </div>
+
+        <aside class="right-col">
+          <div class="panel">
+            <h3>Patient queue</h3>
+            <!-- content -->
+          </div>
+
+          <div class="panel">
+            <h3>Recent activity</h3>
+            <!-- content -->
+          </div>
+        </aside>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    (function(){
+      const root = document.getElementById('root');
+      const toggleBtn = document.getElementById('toggleBtn');
+      const navItems = document.querySelectorAll('.nav-item');
+      const logout = document.getElementById('logoutBtn');
+
+      toggleBtn.addEventListener('click', ()=> root.classList.toggle('collapsed'));
+
+      navItems.forEach(item=>{
+        item.addEventListener('click', ()=>{
+          const link = item.dataset.link;
+          navItems.forEach(i=>i.classList.remove('active'));
+          item.classList.add('active');
+
+          if (link === 'settings') {
+            window.location.href = 'settings.html';
+            return;
+          }
+          window.scrollTo({top:0,behavior:'smooth'});
+          if(window.innerWidth < 980) root.classList.remove('collapsed');
+        });
+      });
+
+      logout.addEventListener('click', ()=>{
+        try { localStorage.removeItem('loggedInUser'); localStorage.removeItem('userRole'); } catch(e){}
+        window.location.href = 'index.html';
+      });
+    })();
+  </script>
+</body>
+</html>

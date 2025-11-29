@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SehatSaathi — Settings</title>
+
+  <!-- shared theme -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* small page-specific styles for settings */
+    .settings-root { max-width:1100px; margin:28px auto; padding:20px; }
+    .settings-grid { display:grid; grid-template-columns: 1fr 360px; gap:20px; align-items:start; }
+    .panel { background:#fff; padding:18px; border-radius:12px; box-shadow:var(--shadow); }
+    .form-row { display:flex; gap:12px; margin-bottom:12px; flex-wrap:wrap; }
+    .form-row .input { flex:1; }
+    .section-title { font-weight:700; color:var(--accent); margin-bottom:12px; }
+    .small-note { color:var(--muted); font-size:0.95rem; margin-top:8px; }
+    .switch { display:inline-flex; align-items:center; gap:8px; cursor:pointer; }
+    .btn-row { display:flex; gap:12px; justify-content:flex-end; margin-top:12px; }
+    .connected { display:flex; gap:8px; align-items:center; margin-bottom:8px; }
+    .danger { background:transparent; color:var(--danger); border:1px solid rgba(239,68,68,0.08); padding:8px 12px; border-radius:10px; }
+    @media (max-width:980px) {
+      .settings-grid { grid-template-columns: 1fr; }
+    }
+
+    /* brand/logo used on header */
+    .brand-inline { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .brand-inline img { width:40px; height:40px; border-radius:8px; object-fit:contain; box-shadow:0 6px 18px rgba(2,20,60,0.04); background:#fff; }
+    .brand-inline .brand-text { font-weight:800; color:var(--accent); font-size:1rem; }
+  </style>
+</head>
+<body>
+  <header class="container" style="display:flex;justify-content:space-between;align-items:center;padding-top:18px;">
+    <a class="brand-inline" href="index.html" aria-label="SehatSaathi home">
+      <img src="assets/img/sehatsaathi-logo.png" alt="SehatSaathi logo" onerror="this.style.display='none'">
+      <div class="brand-text">SehatSaathi</div>
+    </a>
+
+    <div style="display:flex;gap:10px;align-items:center">
+      <button id="backBtn" class="btn btn-ghost">Back to Dashboard</button>
+      <button id="logoutBtn" class="btn btn-ghost">Logout</button>
+    </div>
+  </header>
+
+  <main class="settings-root">
+    <h1 style="margin:0 0 8px">Settings</h1>
+    <p class="small-note">Update profile, notification preferences and connected accounts. Changes are stored locally (demo).</p>
+
+    <div class="settings-grid">
+
+      <!-- LEFT: main settings form -->
+      <section class="panel" aria-labelledby="profile-heading">
+        <h2 id="profile-heading" class="section-title">Profile</h2>
+        <form id="settingsForm">
+          <div class="form-row">
+            <input id="fullName" class="input" placeholder="Full name" required>
+            <input id="email" class="input" placeholder="Email">
+          </div>
+
+          <div class="form-row">
+            <select id="countryCode" class="select" style="min-width:110px">
+              <option value="+91">+91</option>
+              <option value="+1">+1</option>
+            </select>
+            <input id="phone" class="input" placeholder="Phone number" required>
+          </div>
+
+          <div style="margin-top:6px;margin-bottom:6px;font-weight:600">Change password</div>
+          <div class="form-row">
+            <input id="pass" class="input" type="password" placeholder="New password (leave blank to keep)">
+            <input id="passConfirm" class="input" type="password" placeholder="Confirm new password">
+          </div>
+
+          <hr style="margin:16px 0; border:0; border-top:1px solid rgba(2,6,23,0.04)">
+
+          <h3 class="section-title" style="font-size:1rem">Notifications</h3>
+          <label class="switch"><input id="notifyPush" type="checkbox"> Push notifications</label><br>
+          <label class="switch"><input id="notifySms" type="checkbox"> SMS alerts</label><br>
+          <label class="switch"><input id="notifyEmail" type="checkbox"> Email updates</label>
+
+          <hr style="margin:16px 0; border:0; border-top:1px solid rgba(2,6,23,0.04)">
+
+          <h3 class="section-title" style="font-size:1rem">Privacy & data</h3>
+          <label class="switch"><input id="shareWithFamily" type="checkbox"> Share data with everyone</label><br>
+          <label class="switch"><input id="shareWithDoctor" type="checkbox"> Share data with patient olny</label>
+
+          <div class="btn-row">
+            <button type="button" id="cancelBtn" class="btn btn-ghost">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+
+        
+      </section>
+
+      <!-- RIGHT: connected accounts + danger actions -->
+      <aside>
+        <div class="panel">
+          <h3 class="section-title" style="font-size:1rem">Connected accounts</h3>
+
+          <div class="connected">
+            <div style="flex:1">
+              <div style="font-weight:700">Google</div>
+              <div class="small-note">Connected (demo)</div>
+            </div>
+            <div><button id="unlinkGoogle" class="btn btn-ghost small">Unlink</button></div>
+          </div>
+
+          <div class="connected">
+            <div style="flex:1">
+              <div style="font-weight:700">Apple Health</div>
+              <div class="small-note">Not connected</div>
+            </div>
+            <div><button id="connectApple" class="btn btn-ghost small">Connect</button></div>
+          </div>
+
+          <hr style="margin:12px 0;border:0;border-top:1px solid rgba(2,6,23,0.04)">
+
+          
+          <div style="display:flex;flex-direction:column;gap:10px">
+            
+            <button id="deleteAccount" class="danger">Delete account</button>
+          </div>
+        </div>
+
+        
+      </aside>
+
+    </div>
+  </main>
+
+  
+</body>
+</html>
